@@ -7,5 +7,104 @@
     tools:context=".MainActivity">
 
 
+    <TabHost
+        android:id="@+id/tbhConversores"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:id="@+id/tablongitud"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/lblDe"
+                        android:text="De: "
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <Spinner
+                        android:id="@+id/cboDe"
+                        android:layout_marginLeft="40dp"
+                        android:entries="@array/ConversorLongitud"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/lblA"
+                        android:text="A: "
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_below="@+id/lblDe"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <Spinner
+                        android:id="@+id/cboA"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_below="@+id/lblDe"
+                        android:entries="@array/ConversorLongitud"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                    <EditText
+                        android:id="@+id/txtCantidad"
+                        android:layout_below="@+id/cboA"
+                        android:layout_marginTop="20dp"
+                        android:hint="Cantidad"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/lblRespuesta"
+                        android:layout_below="@+id/txtCantidad"
+                        android:layout_marginTop="20dp"
+                        android:hint="Respuesta"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <Button
+                        android:id="@+id/btnCalcular"
+                        android:text="Calcular"
+                        android:layout_below="@+id/txtCantidad"
+                        android:layout_marginTop="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+
+                </RelativeLayout>
+
+                <RelativeLayoutLayout
+                    android:id="@+id/tabmasa"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                </RelativeLayoutLayout>
+
+                <RelativeLayoutLayout
+                    android:id="@+id/tabmonedas"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                </RelativeLayoutLayout>
+            </FrameLayout>
+        </LinearLayout>
+    </TabHost>
 
 </RelativeLayout>

@@ -1,14 +1,18 @@
 <resources>
-    <string name="app_name">Calculadora Basica</string>
-    <string-array name="operacionesBasicas">
-        <item>Suma</item>
-        <item>Resta</item>
-        <item>Multiplicacion</item>
-        <item>Division</item>
-        <item>Factorial</item>
-        <item>Porcentaje</item>
-        <item>Raiz</item>
-        <item>Modulo</item>
-        <item>MayorDeDosNumeros</item>
-    </string-array>
+    <string name="app_name">Conversor de Unidades</string>
+   <string-array name="ConversorLongitud">
+       <item>Metro</item>
+       <item>Centimetro</item>
+       <item>Pulgada</item>
+       <item>Nanometro</item>
+       <item>Micrones</item>
+       <item>Milimetro</item>
+       <item>Pie</item>
+       <item>Yarda</item>
+       <item>Kilometro</item>
+       <item>Milla</item>
+   </string-array>
+
+
+
 </resources>

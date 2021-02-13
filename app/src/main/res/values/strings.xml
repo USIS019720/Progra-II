@@ -5,13 +5,39 @@
        <item>Centimetro</item>
        <item>Pulgada</item>
        <item>Nanometro</item>
-       <item>Micrones</item>
+       <item>Milla Nautica</item>
        <item>Milimetro</item>
        <item>Pie</item>
        <item>Yarda</item>
        <item>Kilometro</item>
        <item>Milla</item>
    </string-array>
+
+    <string-array name="ConversorMasa">
+    <item>Libra</item>
+    <item>Quilates</item>
+    <item>Miligramos</item>
+    <item>Centigramos</item>
+    <item>Decigramos</item>
+    <item>Gramos</item>
+    <item>Decagramos</item>
+    <item>Hectagramos</item>
+    <item>Kilogramos</item>
+    <item>Onzas</item>
+</string-array>
+
+    <string-array name="ConversorMonedas">
+        <item>Dolar</item>
+        <item>PesoArgentino</item>
+        <item>Yuan</item>
+        <item>DolarCanadiense</item>
+        <item>Rial</item>
+        <item>ColonCostarricense</item>
+        <item>Bitcoin</item>
+        <item>Corona</item>
+        <item>Quetzal</item>
+        <item>Colon</item>
+    </string-array>
 
 
 

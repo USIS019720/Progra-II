@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         tbhconversores.addTab(tbhconversores.newTabSpec( "Almacenamiento").setContent(R.id.tabAlmacenamiento).setIndicator("A"));
         tbhconversores.addTab(tbhconversores.newTabSpec( "Tiempo").setContent(R.id.tabTiempo).setIndicator("T"));
         tbhconversores.addTab(tbhconversores.newTabSpec( "Temperatura").setContent(R.id.tabTemperatura).setIndicator("J"));
+        tbhconversores.addTab(tbhconversores.newTabSpec( "volumen").setContent(R.id.tabvolumen).setIndicator("V"));
 
         btnconvertir = findViewById(R.id.btnCalcular);
         btnconvertir.setOnClickListener(new View.OnClickListener() {
@@ -166,6 +167,48 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        btnconvertir = findViewById(R.id.btnCalcularV);
+        btnconvertir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    temval = findViewById(R.id.txtCantidadV);
+                    double cantidad = Double.parseDouble(temval.getText().toString());
+
+                    spnopcionDe = findViewById(R.id.cboDeV);
+                    spnopcionA = findViewById(R.id.cboAV);
+                    temval = findViewById(R.id.lblRespuestaV);
+
+                    temval.setText("Respuesta: " + miconversor.convertir(6, spnopcionDe.getSelectedItemPosition(), spnopcionA.getSelectedItemPosition(), cantidad));
+                }catch (Exception e){
+                    temval = findViewById(R.id.lblRespuestaV);
+                    temval.setText("Por favor ingrese los valores correspondiente");
+                    Toast.makeText(getApplicationContext(), "Por ingrese los valores correspondiente "+ e.getMessage(),Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        btnconvertir = findViewById(R.id.btnCalcularH);
+        btnconvertir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    temval = findViewById(R.id.txtCantidadH);
+                    double cantidad = Double.parseDouble(temval.getText().toString());
+
+                    spnopcionDe = findViewById(R.id.cboDeH);
+                    spnopcionA = findViewById(R.id.cboAH);
+                    temval = findViewById(R.id.lblRespuestaH);
+
+                    temval.setText("Respuesta: " + miconversor.convertir(7, spnopcionDe.getSelectedItemPosition(), spnopcionA.getSelectedItemPosition(), cantidad));
+                }catch (Exception e){
+                    temval = findViewById(R.id.lblRespuestaH);
+                    temval.setText("Por favor ingrese los valores correspondiente");
+                    Toast.makeText(getApplicationContext(), "Por ingrese los valores correspondiente "+ e.getMessage(),Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 }
 
@@ -177,6 +220,8 @@ class conversores{
         {1.00,0.125,0.001,0.00125,0.555551,0.000000125,0.000000001,0.000000000125,0.000000000001,0.000000000000125},//Almacenamiento
         {1.00,86400.00,1440.00,24.00,0.142857,0.0328767,0.00273973,0.000273973,0.000027379,86400000.00},//Tiempo
         {1.00,32.00,273.15},//Temperatura
+        {1.00,1000.00,1000.00,0.001,202.88,67.628,4.22,1.056,0.26,61.023},//volumen
+        {1.00,0.0001,0.00000001,0.0000000001,0.155,0.00107,0.000119,0.0000000247,0.0000000000386,100.00},//area
 
     };
 

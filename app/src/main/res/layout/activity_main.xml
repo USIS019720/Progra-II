@@ -329,6 +329,68 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/tabvolumen"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/lblDeV"
+                        android:text="De: "
+                        android:layout_marginLeft="15dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <Spinner
+                        android:id="@+id/cboDeV"
+                        android:layout_marginLeft="40dp"
+                        android:entries="@array/Conversorvolumen"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/lblAV"
+                        android:text="A: "
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_below="@+id/lblDeV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <Spinner
+                        android:id="@+id/cboAV"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_below="@+id/lblDeV"
+                        android:entries="@array/Conversorvolumen"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                    <EditText
+                        android:id="@+id/txtCantidadV"
+                        android:layout_below="@+id/cboAV"
+                        android:layout_marginTop="20dp"
+                        android:hint="Cantidad"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/lblRespuestaV"
+                        android:layout_below="@+id/txtCantidadV"
+                        android:layout_marginTop="20dp"
+                        android:hint="Respuesta"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <Button
+                        android:id="@+id/btnCalcularV"
+                        android:text="Calcular"
+                        android:layout_below="@+id/txtCantidadV"
+                        android:layout_marginTop="100dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
                     android:id="@+id/tabTemperatura"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -389,6 +451,66 @@
 
                 </RelativeLayout>
 
+                <RelativeLayout
+                    android:id="@+id/tabarea"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/lblDeH"
+                        android:text="De: "
+                        android:layout_marginLeft="15dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <Spinner
+                        android:id="@+id/cboDeH"
+                        android:layout_marginLeft="40dp"
+                        android:entries="@array/Conversorarea"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/lblAH"
+                        android:text="A: "
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_below="@+id/lblDeH"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <Spinner
+                        android:id="@+id/cboAH"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_below="@+id/lblDeH"
+                        android:entries="@array/Conversorarea"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                    <EditText
+                        android:id="@+id/txtCantidadH"
+                        android:layout_below="@+id/cboAH"
+                        android:layout_marginTop="20dp"
+                        android:hint="Cantidad"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/lblRespuestaH"
+                        android:layout_below="@+id/txtCantidadH"
+                        android:layout_marginTop="20dp"
+                        android:hint="Respuesta"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <Button
+                        android:id="@+id/btnCalcularH"
+                        android:text="Calcular"
+                        android:layout_below="@+id/txtCantidadH"
+                        android:layout_marginTop="100dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </RelativeLayout>
 
 
             </FrameLayout>

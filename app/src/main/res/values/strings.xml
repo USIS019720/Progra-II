@@ -39,6 +39,37 @@
         <item>Colon</item>
     </string-array>
 
+   <string-array name="ConversorAlmacenamiento">
+       <item>Megabits</item>
+       <item>Megabyte</item>
+       <item>Gigabits</item>
+       <item>Gigabyte</item>
+       <item>Terabits</item>
+       <item>Terabyte</item>
+       <item>Petabits</item>
+       <item>Petabyte</item>
+       <item>Exabits</item>
+       <item>Exabyte</item>
+   </string-array>
+
+    <string-array name="ConversorTiempo">
+        <item>Dia</item>
+        <item>Segundo</item>
+        <item>Minuto</item>
+        <item>Hora</item>
+        <item>Semana</item>
+        <item>Mes</item>
+        <item>Año</item>
+        <item>Decada</item>
+        <item>Siglo</item>
+        <item>Milisegundo</item>
+    </string-array>
+
+    <string-array name="ConversorTemperatura">
+        <item>Celsius</item>
+        <item>Fahrenheit</item>
+        <item>Kelvin</item>
+    </string-array>
 
 
 </resources>

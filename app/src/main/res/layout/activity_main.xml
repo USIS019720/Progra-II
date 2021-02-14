@@ -203,7 +203,40 @@
                         android:layout_marginTop="100dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
+                </RelativeLayout>
 
+                <RelativeLayout
+                    android:id="@+id/tabAlmacenamiento"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/tabTiempo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/tabTemperatura"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/tabVolumen"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/tabArea"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
                 </RelativeLayout>
             </FrameLayout>

@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
 
         btnconvertir = findViewById(R.id.btnCalcular);
         btnconvertir.setOnClickListener(new View.OnClickListener() {
+
+
             @Override
             public void onClick(View v) {
                 try {
@@ -53,8 +55,53 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
             });
-   }
 
+
+
+         btnconvertir = findViewById(R.id.btnCalcularp);
+         btnconvertir.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            try {
+                temval = findViewById(R.id.txtCantidadp);
+                double cantidad = Double.parseDouble(temval.getText().toString());
+
+                spnopcionDe = findViewById(R.id.cboDep);
+                spnopcionA = findViewById(R.id.cboAp);
+                temval = findViewById(R.id.lblRespuestap);
+
+                temval.setText("Respuesta: " + miconversor.convertir(1, spnopcionDe.getSelectedItemPosition(), spnopcionA.getSelectedItemPosition(), cantidad));
+            }catch (Exception e){
+                temval = findViewById(R.id.lblRespuestap);
+                temval.setText("Por favor ingrese los valores correspondiente");
+                Toast.makeText(getApplicationContext(), "Por ingrese los valores correspondiente "+ e.getMessage(),Toast.LENGTH_SHORT).show();
+            }
+        }
+    });
+
+
+        btnconvertir = findViewById(R.id.btnCalcularm);
+        btnconvertir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    temval = findViewById(R.id.txtCantidadm);
+                    double cantidad = Double.parseDouble(temval.getText().toString());
+
+                    spnopcionDe = findViewById(R.id.cboDem);
+                    spnopcionA = findViewById(R.id.cboAm);
+                    temval = findViewById(R.id.lblRespuestam);
+
+                    temval.setText("Respuesta: " + miconversor.convertir(2, spnopcionDe.getSelectedItemPosition(), spnopcionA.getSelectedItemPosition(), cantidad));
+                }catch (Exception e){
+                    temval = findViewById(R.id.lblRespuestam);
+                    temval.setText("Por favor ingrese los valores correspondiente");
+                    Toast.makeText(getApplicationContext(), "Por ingrese los valores correspondiente "+ e.getMessage(),Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+}
 
 class conversores{
     Double [][] conversor = {
@@ -63,8 +110,9 @@ class conversores{
         {1.00,34.45,6.45,1.27,3.64,607.65,0.000021,6.13,7.74,8.75},//Monedas
         {}
     };
+
     public double convertir(int opcion, int de, int a, double cantidad){
         return conversor[opcion][a] / conversor[opcion][de] * cantidad;
+          }
+
     }
-}
-}

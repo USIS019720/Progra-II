@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
         btnconvertir = findViewById(R.id.btnCalcular);
         btnconvertir.setOnClickListener(new View.OnClickListener() {
 
-
             @Override
             public void onClick(View v) {
                 try {

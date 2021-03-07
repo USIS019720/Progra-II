@@ -6,6 +6,93 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <TabHost
+        android:id="@+id/tbhagua"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:id="@+id/tabagua"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <EditText
+                        android:id="@+id/txtnum1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tabagua"
+                        android:hint="Escribe un numero"
+                        android:layout_margin="10dp"
+                        tools:ignore="NotSibling" />
+
+
+                    <RadioGroup
+                        android:id="@+id/optOperacionesBasicas"
+                        android:layout_width="wrap_content"
+                        android:layout_below="@id/txtnum1"
+                        android:layout_margin="10dp"
+                        android:layout_height="wrap_content">
+                        <RadioButton
+                            android:id="@+id/optcaso1"
+                            android:checked="true"
+                            android:text="1---18"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                        <RadioButton
+                            android:id="@+id/optcaso2"
+                            android:checked="true"
+                            android:text="19--28"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                        <RadioButton
+                            android:id="@+id/optcaso3"
+                            android:text="29 en adelante"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                    </RadioGroup>
+
+                    <TextView
+                        android:id="@+id/lblRespuesta"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/optOperacionesBasicas"
+                        android:layout_marginTop="10dp"
+                        android:text="Respuesta: ?"
+                        android:textAlignment="center"
+                        android:gravity="center_horizontal" />
+
+
+                    <Button
+                        android:id="@+id/btncalcular"
+                        android:layout_below="@+id/lblRespuesta"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:onClick="calcular"
+                        android:text="Calcular"
+                        tools:ignore="OnClick" />
+
+                </RelativeLayout>
+
+
+
+            </FrameLayout>
+        </LinearLayout>
+    </TabHost>
 
 </RelativeLayout>

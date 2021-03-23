@@ -7,28 +7,24 @@
     tools:context=".MainActivity">
 
     <EditText
-        android:id="@+id/txtBuscarProducto"
+        android:id="@+id/txtBuscarProductos"
+        android:hint="Buscar Productos"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
     <ListView
-        android:id="@+id/Ltsproducto"
+        android:id="@+id/ltsproducto"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/txtBuscarProductos"/>
 
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/btnAgregarProducto"
-        android:layout_width="113dp"
-        android:layout_height="41dp"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnAgregarproductos"
+        android:src="@android:drawable/ic_input_add"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_alingParentBottom="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp"
-        android:src="@android:drawable/ic_input_add" />
-
-
+        android:layout_margin="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 </RelativeLayout>

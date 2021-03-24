@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AgregarProductos">
+
+    <ImageButton
+        android:id="@+id/imgFotoProducto"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"/>
+    <EditText
+        android:id="@+id/txtCodigo"
+        android:layout_below="@id/imgFotoProducto"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Codigo"/>
+    <EditText
+        android:id="@+id/txtNombre"
+        android:layout_below="@id/txtCodigo"
+        android:layout_margin="10dp"
+        android:hint="Nombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:id="@+id/txtMarca"
+        android:layout_below="@id/txtNombre"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Marca"/>
+    <EditText
+        android:id="@+id/txtPresentacion"
+        android:layout_below="@id/txtMarca"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Presentacion"/>
+    <EditText
+        android:id="@+id/txtPrecio"
+        android:layout_below="@id/txtPresentacion"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Precio"/>
+    <Button
+        android:id="@+id/btnGuardarProducto"
+        android:layout_below="@id/txtPrecio"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Guardar producto"/>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnAtras"
+        android:layout_width="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/abc_vector_test"
+        android:layout_height="wrap_content"/>
+</RelativeLayout>
+

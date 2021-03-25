@@ -40,6 +40,7 @@ public class AgregarProductos extends AppCompatActivity {
         });
         imgFotoProducto = findViewById(R.id.imgFotoProducto);
         imgFotoProducto.setOnClickListener(v->{
+            tomarFotoProducto();
 
         });
 

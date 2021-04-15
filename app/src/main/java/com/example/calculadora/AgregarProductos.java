@@ -29,21 +29,20 @@ public class AgregarProductos extends AppCompatActivity {
     FloatingActionButton btnAtras;
     ImageView imgFotoProducto;
     Intent tomarFotoIntent;
-    String urlCompletaimg,idprodcuto,accion="nuevo";
+    String urlCompletaimg,idproducto,accion="nuevo";
     Button btn;
     DB miBD;
     TextView tempVal;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar_productos);
 
         miBD = new DB(getApplicationContext(),"",null, 1);
-
         btnAtras = findViewById(R.id.btnAtras);
         btnAtras.setOnClickListener(v->{
             mostrarVistaPrincipal();
-
         });
         imgFotoProducto = findViewById(R.id.imgFotoProducto);
         imgFotoProducto.setOnClickListener(v->{
@@ -51,7 +50,6 @@ public class AgregarProductos extends AppCompatActivity {
         });
         btn = findViewById(R.id.btnGuardarProducto);
         btn.setOnClickListener(v ->{
-
 
             tempVal = findViewById(R.id.txtCodigo);
             String codigo = tempVal.getText().toString();
@@ -68,14 +66,43 @@ public class AgregarProductos extends AppCompatActivity {
             tempVal = findViewById(R.id.txtPrecio);
             String precio = tempVal.getText().toString();
 
-            String[] datos= {idprodcuto,codigo,nombre,marca,presentacion,precio,urlCompletaimg};
+            String[] datos= {idproducto,codigo,nombre,marca,presentacion,precio,urlCompletaimg};
             miBD.administracion_productos(accion,datos);
-
             mostrarVistaPrincipal();
             mostrarMsgToast("registro guardado con exito.");
-
     });
+        mostrarDatosProductos();
+    }
+    private void mostrarDatosProductos() {
+        try{
+            Bundle recibirParametros = getIntent().getExtras();
+            accion = recibirParametros.getString("accion");
+            if(accion.equals("modificar")){
+                String[] datos = recibirParametros.getStringArray("datos");
+                idproducto = datos[0];
 
+                tempVal = findViewById(R.id.txtCodigo);
+                tempVal.setText(datos[1]);
+
+                tempVal = findViewById(R.id.txtNombre);
+                tempVal.setText(datos[2]);
+
+                tempVal = findViewById(R.id.txtMarca);
+                tempVal.setText(datos[3]);
+
+                tempVal = findViewById(R.id.txtPresentacion);
+                tempVal.setText(datos[4]);
+
+                tempVal = findViewById(R.id.txtPrecio);
+                tempVal.setText(datos[5]);
+
+                urlCompletaimg = datos[6];
+                Bitmap bitmap = BitmapFactory.decodeFile((urlCompletaimg));
+                imgFotoProducto.setImageBitmap(bitmap);
+            }
+        }catch (Exception e){
+            mostrarMsgToast(e.getMessage());
+        }
     }
         private void mostrarVistaPrincipal(){
             Intent iprincipal = new Intent(getApplicationContext(), MainActivity.class);
@@ -103,7 +130,6 @@ public class AgregarProductos extends AppCompatActivity {
             }
         }
     }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -112,13 +138,10 @@ public class AgregarProductos extends AppCompatActivity {
                 Bitmap imagenBitmap = BitmapFactory.decodeFile(urlCompletaimg);
                 imgFotoProducto.setImageBitmap(imagenBitmap);
             }
-
         }catch(Exception e){
         mostrarMsgToast(e.getMessage());
     }
-
     }
-
     private File crearImagenProducto() throws Exception {
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String nombreProducto = "imagen"+ timeStamp +"_";
@@ -133,5 +156,4 @@ public class AgregarProductos extends AppCompatActivity {
     private void mostrarMsgToast(String msg){
         Toast.makeText(getApplicationContext(),msg, Toast.LENGTH_SHORT).show();
     }
-
 }

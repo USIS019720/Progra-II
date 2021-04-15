@@ -3,8 +3,12 @@ package com.example.calculadora;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -24,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<productos> productosArrayListCopy=new ArrayList<productos>();
     productos misProductos;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,17 +38,100 @@ public class MainActivity extends AppCompatActivity {
             AgregarProductos("nuevo", new String[]{});
         });
         mostrarDatosProductos();
+        buscarproductos();
     }
-    private void AgregarProductos(String nuevo, String[] strings){
-        Intent AgregarProductos = new Intent(getApplicationContext(), AgregarProductos.class);
-        startActivity(AgregarProductos);
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+        try {
+            switch (item.getItemId()) {
+                case R.id.mnxAgregar:
+                    AgregarProductos("nuevo", new String[]{});
+                    break;
+                case R.id.mnxModificar:
+                    String[] datos = {
+                            datosProductosCursor.getString(0),//idProducto
+                            datosProductosCursor.getString(1),//codigo
+                            datosProductosCursor.getString(2),//nombre
+                            datosProductosCursor.getString(3),//marca
+                            datosProductosCursor.getString(4), //presentacion
+                            datosProductosCursor.getString(5), //precio
+                            datosProductosCursor.getString(5) //urlImagen
+                    };
+                    AgregarProductos("modificar", datos);
+                    break;
+                case R.id.mnxEliminar:
+                    eliminarProducto();
+                    break;
+            }
+        }catch (Exception ex){
+            mostrarMsgToast(ex.getMessage());
+        }
+        return super.onContextItemSelected(item);
     }
+    private void AgregarProductos(String accion, String[] datos){
+        try {
+            Bundle parametrosProductos = new Bundle();
+            parametrosProductos.putString("accion", accion);
+            parametrosProductos.putStringArray("datos", datos);
+
+            Intent AgregarProductos = new Intent(getApplicationContext(), AgregarProductos.class);
+            AgregarProductos.putExtras(parametrosProductos);
+            startActivity(AgregarProductos);
+        }catch (Exception e){
+            mostrarMsgToast(e.getMessage());
+        }
+    }
+
+    private void buscarproductos() {
+        TextView tempVal = findViewById(R.id.txtBuscarProductos);
+        tempVal.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                try{
+                    productosArrayList.clear();
+                    if( tempVal.getText().toString().trim().length()<1 ){//si no esta escribiendo, mostramos todos los registros
+                        productosArrayList.addAll(productosArrayListCopy);
+                    } else {//si esta buscando entonces filtramos los datos
+                        for (productos pm : productosArrayList){
+                            String codigo = pm.getCodigo();
+                            String nom = pm.getNombre();
+                            String mar = pm.getMarca();
+                            String pres = pm.getPresentacion();
+                            String prec = pm.getPrecio();
+
+                            String buscando = tempVal.getText().toString().trim().toLowerCase();//escribe en la caja de texto...
+
+                            if(codigo.toLowerCase().trim().contains(buscando) ||
+                                    nom.trim().contains(buscando) ||
+                                    mar.trim().toLowerCase().contains(buscando) ||
+                                    pres.trim().toLowerCase().contains(buscando)||
+                                    prec.trim().toLowerCase().contains(buscando)
+                            ){
+                                productosArrayList.add(pm);
+                            }
+                        }
+                    }
+                    adaptadorImagenes adaptadorImagenes = new adaptadorImagenes(getApplicationContext(), productosArrayList);
+                    ltsProductos.setAdapter(adaptadorImagenes);
+                }catch (Exception e){
+                    mostrarMsgToast(e.getMessage());
+                }
+
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+          });
+        }
+
     private void obtenerDatosProductos() {
         miBD = new DB(getApplicationContext(),"",null, 1);
         datosProductosCursor = miBD.administracion_productos("consultar",null);
         if (datosProductosCursor.moveToFirst()){
             mostrarDatosProductos();
-
         }else {
             mostrarMsgToast("no hay datos de productos que mostrar, porfavor agrege productos");
             AgregarProductos("nuevo", new String[]{});
@@ -74,9 +160,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
-
-
     private void mostrarDatosProductos (){
         ltsProductos = findViewById(R.id.ltsproducto);
         productosArrayList.clear();
@@ -91,7 +174,6 @@ public class MainActivity extends AppCompatActivity {
                     datosProductosCursor.getString(6) //urlPhoto
             );
             productosArrayList.add(misProductos);
-            mostrarMsgToast(datosProductosCursor.getString(6));
         }while(datosProductosCursor.moveToNext());
         adaptadorImagenes adaptadorImagenes = new adaptadorImagenes(getApplicationContext(),productosArrayList);
         ltsProductos.setAdapter(adaptadorImagenes);
@@ -99,11 +181,11 @@ public class MainActivity extends AppCompatActivity {
         productosArrayListCopy.addAll(productosArrayList);
 
     }
-
     private void mostrarMsgToast (String msg){
         Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG).show();
     }
 }
+
 class productos{
     String idProducto;
     String codigo;

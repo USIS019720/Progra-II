@@ -32,13 +32,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        try {
+            btn = findViewById(R.id.btnAgregarproductos);
+            btn.setOnClickListener(v -> {
+                AgregarProductos("nuevo", new String[]{});
+            });
+            obtenerDatosProductos();
+            buscarproductos();
+            mostrarDatosProductos();
+        }catch (Exception e){
+            mostrarMsgToast(e.getMessage());
+        }
 
-        btn = findViewById(R.id.btnAgregarproductos);
-        btn.setOnClickListener(v -> {
-            AgregarProductos("nuevo", new String[]{});
-        });
-        mostrarDatosProductos();
-        buscarproductos();
     }
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
@@ -55,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
                             datosProductosCursor.getString(3),//marca
                             datosProductosCursor.getString(4), //presentacion
                             datosProductosCursor.getString(5), //precio
-                            datosProductosCursor.getString(5) //urlImagen
+                            datosProductosCursor.getString(6) //urlImagen
                     };
                     AgregarProductos("modificar", datos);
                     break;
@@ -96,7 +101,6 @@ public class MainActivity extends AppCompatActivity {
                         productosArrayList.addAll(productosArrayListCopy);
                     } else {//si esta buscando entonces filtramos los datos
                         for (productos pm : productosArrayList){
-                            String codigo = pm.getCodigo();
                             String nom = pm.getNombre();
                             String mar = pm.getMarca();
                             String pres = pm.getPresentacion();
@@ -104,8 +108,7 @@ public class MainActivity extends AppCompatActivity {
 
                             String buscando = tempVal.getText().toString().trim().toLowerCase();//escribe en la caja de texto...
 
-                            if(codigo.toLowerCase().trim().contains(buscando) ||
-                                    nom.trim().contains(buscando) ||
+                            if(nom.toLowerCase().trim().contains(buscando) ||
                                     mar.trim().toLowerCase().contains(buscando) ||
                                     pres.trim().toLowerCase().contains(buscando)||
                                     prec.trim().toLowerCase().contains(buscando)
@@ -128,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
     private void obtenerDatosProductos() {
-        miBD = new DB(getApplicationContext(),"",null, 1);
+        miBD = new DB(getApplicationContext(),"",null, 2);
         datosProductosCursor = miBD.administracion_productos("consultar",null);
         if (datosProductosCursor.moveToFirst()){
             mostrarDatosProductos();
@@ -142,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             AlertDialog.Builder confirmacion = new AlertDialog.Builder(MainActivity.this);
             confirmacion.setTitle("Esta seguro de eliminar el registro?");
-            confirmacion.setMessage(datosProductosCursor.getString(1));
+            confirmacion.setMessage(datosProductosCursor.getString(0));
             confirmacion.setPositiveButton("Si", (dialog, which) -> {
                 miBD = new DB(getApplicationContext(), "", null, 1);
                 datosProductosCursor = miBD.administracion_productos("eliminar", new String[]{datosProductosCursor.getString(0)});//idAmigo

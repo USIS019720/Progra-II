@@ -15,6 +15,7 @@ public class DB extends SQLiteOpenHelper {
 
     public DB(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, nombreDB, factory, version);
+        miContext = context;
     }
 
     @Override
@@ -44,6 +45,7 @@ public class DB extends SQLiteOpenHelper {
                 sqLiteDatabaseW.execSQL("DELETE FROM tblproductos WHERE idProdutos='" + datos[0] + "'");
                 break;
         }
+
         return datosCursor;
     }catch (Exception e){
             Toast.makeText(miContext, "Error en la administracion de la BD "+ e.getMessage(), Toast.LENGTH_LONG).show();

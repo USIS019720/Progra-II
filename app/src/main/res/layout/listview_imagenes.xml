@@ -17,12 +17,12 @@
         android:scaleType="centerCrop"/>
     </androidx.cardview.widget.CardView>
 
-
     <TextView
         android:id="@+id/lbltitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Soda"
+        android:textColor="@color/black"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="80dp"/>
 

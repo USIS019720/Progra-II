@@ -39,10 +39,10 @@ public class AgregarProductos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar_productos);
 
-        miBD = new DB(getApplicationContext(),"",null, 1);
+        miBD = new DB(getApplicationContext(),"",null, 2);
         btnAtras = findViewById(R.id.btnAtras);
         btnAtras.setOnClickListener(v->{
-            mostrarVistaPrincipal();
+            mostrarDatosProductos();
         });
         imgFotoProducto = findViewById(R.id.imgFotoProducto);
         imgFotoProducto.setOnClickListener(v->{
